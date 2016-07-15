@@ -23,17 +23,15 @@ module.exports = function(data) {
     /* функция генерирует новое имя класса по алгоритму, описанному в Readme */
     function createNewClassName(_item, _index)
     {
-        var i = _index;
-        var k = i % CONST_LEN_ALPH;
+        var i = _index, k = 0;
+        var str = "";
 
-        var str = letterAlph.charAt(k);
-
-        while (i > k)
+        do
         {
-            i = (i - k) / CONST_LEN_ALPH;
             k = i % CONST_LEN_ALPH;
             str = letterAlph.charAt(k) + str;
-        }
+            i = Math.floor((i - k) / CONST_LEN_ALPH);
+        } while (i != 0);
 
         return str;
     }
